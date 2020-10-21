@@ -778,7 +778,7 @@ export default {
           title: "Confirm Your Action",
           subtitle: "Are you sure you want to Cancel this request.",
           message:
-            "You are going to Cancel this request. This action can not be reverted."
+            "You are going to Cancel this request denied. This action can not be reverted."
         };
       }
     },
