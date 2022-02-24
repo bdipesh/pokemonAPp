@@ -1,4 +1,13 @@
-export async function onRequest({ env }) {
-  const task = await env.TodoList.get("Task:123");
-  return new Response(task);
+export async function onRequest(context) {
+  // Contents of context object
+  const {
+    request, // same as existing Worker API
+    env, // same as existing Worker API
+    params, // if filename includes [id] or [[path]]
+    waitUntil, // same as ctx.waitUntil in existing Worker API
+    next, // used for middleware or to fetch assets
+    data, // arbitrary space for passing data between middlewares
+  } = context;
+  const view = await env.KV.get("views");
+  return new Response("Hello, world!" + (await JSON.stringify({ here: view })));
 }
