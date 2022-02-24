@@ -1,4 +1,4 @@
-export const onRequest = () => {
-  const views = await KV.get('views')
-  return new Response(new Date().toISOString() + 'since in types' + await JSON.stringify({'views': views}));
-};
+export async function onRequest({ env }) {
+  const task = await env.TodoList.get("Task:123");
+  return new Response(task);
+}
