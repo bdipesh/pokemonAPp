@@ -1,5 +1,4 @@
 export async function onRequest(context) {
-  // Contents of context object
   const {
     request, // same as existing Worker API
     env, // same as existing Worker API
@@ -8,6 +7,9 @@ export async function onRequest(context) {
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
   } = context;
-
-  return new Response("Hello, world!");
+  console.log(params);
+  console.log(env);
+  const token = params.token;
+  console.log(env.KV);
+  return new Response("Hello, world!" + token);
 }
