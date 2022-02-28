@@ -7,9 +7,10 @@ export async function onRequest(context) {
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
   } = context;
-  console.log(params);
-  console.log(env);
-  const token = params.token;
-  console.log(env.KV);
-  return new Response("Hello, world!" + token);
+  const token = await env.KV.get("token");
+  if (paramsToken === token) {
+    return new Response("Success", token);
+  } else {
+    return new Response("failled", token);
+  }
 }
